@@ -1,6 +1,5 @@
 ﻿using System;
-using ECommerceAP.Models;
-using Models.Models;
+using Models;
 
 namespace Interfaces
 {

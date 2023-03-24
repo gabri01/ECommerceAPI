@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using Interfaces;
-using ECommerceAP.Models;
-using Models.Models;
 
 namespace BusinessLogic
 {
@@ -45,6 +43,10 @@ namespace BusinessLogic
         public List<Prodotto> GetAllProdotti()
         {
             return dal.GetAllProdotti();
+        }
+        public List<OrdiniUtente> GetOrdiniUtente(Utente Utente)
+        {
+            return dal.GetOrdiniUtente(Utente);
         }
     }
 }

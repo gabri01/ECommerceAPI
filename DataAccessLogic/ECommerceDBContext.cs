@@ -7,19 +7,16 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-//Errore?
-//using Microsoft.Identity.Client;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Data;
 
-using ECommerceAP.Models;
-using Models.Models;
 using Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
+using Models;
 
 namespace DataAccessLogic
 {
@@ -41,6 +38,7 @@ namespace DataAccessLogic
         public virtual DbSet<Prodotto> Prodottos { get; set; }
         public virtual DbSet<Ruolo> Ruolos { get; set; }
         public virtual DbSet<Utente> Utentes { get; set; }
+        public virtual DbSet<OrdiniProdotti> OrdiniProdottis { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -134,6 +132,7 @@ namespace DataAccessLogic
             {
                 new Claim("Email", Utente.Email)
             };
+
             var JwtToken = new JwtSecurityToken
             (
                 issuer: "localhost",
@@ -220,6 +219,28 @@ namespace DataAccessLogic
         {
             return this.Prodottos.ToList();
         }
+
+        public List<OrdiniUtente> GetOrdiniUtente(Utente Utente)
+        {
+            var OrdiniQuery = from o in this.Ordines
+                                join u in this.Utentes
+                                  on o.IDUtente equals u.ID
+                                join op in this.OrdiniProdottis
+                                  on o.ID equals op.IDOrdine
+                                join p in this.Prodottos
+                                    on op.IDProdotto equals p.ID
+                              where u.ID == Utente.ID
+                              select new OrdiniUtente()
+                              {
+                                IDUtente = u.ID,
+                                IDProdottoOP = op.ID,
+                                NomeProdotto = p.Nome,
+                                Quantita = op.Quantita
+                              };
+
+            return OrdiniQuery.ToList();
+        }
+
 
 
 

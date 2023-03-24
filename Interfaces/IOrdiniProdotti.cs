@@ -1,10 +1,8 @@
 ﻿using System;
 namespace Interfaces
 {
-	public interface IRuolo
-    {
-
-
+	public interface IOrdiniProdotti
+	{
 	}
 }
 

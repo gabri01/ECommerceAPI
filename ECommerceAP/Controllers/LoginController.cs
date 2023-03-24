@@ -1,11 +1,10 @@
 ﻿using System;
-using ECommerceAP.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Interfaces;
 using DataAccessLogic;
-using Models.Models;
+using Models;
 
 namespace ECommerceAP.Controllers
 {

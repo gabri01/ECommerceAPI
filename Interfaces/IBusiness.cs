@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerceAP.Models;
-using Models.Models;
+using Models;
 
 namespace Interfaces
 {
@@ -17,7 +16,7 @@ namespace Interfaces
         public long Registrazione(Registrazione NuovoUtente);
         public bool ModificaUtente(Registrazione Utente, string Nome, string Cognome, string Email);
         public List<Prodotto> GetAllProdotti();
-      
+        public List<OrdiniUtente> GetOrdiniUtente(Utente Utente);
     }	
 }
 

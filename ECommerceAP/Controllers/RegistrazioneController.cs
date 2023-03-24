@@ -1,8 +1,7 @@
 ﻿using System;
-using ECommerceAP.Models;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Models.Models;
+using Models;
 using Microsoft.AspNetCore.Http;
 
 namespace ECommerceAP.Controllers

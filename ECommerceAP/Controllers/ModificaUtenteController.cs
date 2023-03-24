@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Models.Models;
+using Models;
 using Microsoft.AspNetCore.Http;
 using Interfaces;
-using ECommerceAP.Models;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace ECommerceAP.Controllers
