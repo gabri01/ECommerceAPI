@@ -1,18 +1,11 @@
 ﻿<Properties StartupConfiguration="{BEFB289C-0553-41F2-851E-DDDAFB5C5521}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.ECommerceAP PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Interfaces/IBusiness.cs">
     <Files>
       <File FileName="DataAccessLogic/ECommerceDBContext.cs" Line="218" Column="1" IsPinned="True" />
-      <File FileName="Interfaces/IBusiness.cs" Line="23" Column="1" IsPinned="True" />
+      <File FileName="Interfaces/IBusiness.cs" Line="24" Column="1" IsPinned="True" />
       <File FileName="BusinessClass/BusinessClass.cs" Line="36" Column="10" IsPinned="True" />
       <File FileName="Interfaces/IUtente.cs" Line="21" Column="43" IsPinned="True" />
-      <File FileName="Interfaces/IDAL.cs" Line="10" Column="19" />
+      <File FileName="Interfaces/IDAL.cs" />
       <File FileName="ECommerceAP/Program.cs" />
       <File FileName="ECommerceAP/Controllers/LoginController.cs" />
       <File FileName="Models/Models/Registrazione.cs" />
@@ -20,22 +13,22 @@
       <File FileName="Models/Models/Login.cs" />
       <File FileName="ECommerceAP/efpt.config.json" />
       <File FileName="ECommerceAP/appsettings.Development.json" />
-      <File FileName="Interfaces/IRuolo.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/IRuolo.cs" />
       <File FileName="Interfaces/IPagamento.cs" />
-      <File FileName="Interfaces/IProdotto.cs" Line="12" Column="1" />
+      <File FileName="Interfaces/IProdotto.cs" />
       <File FileName="Models/Models/Utente.cs" />
       <File FileName="Models/Models/Corriere.cs" />
       <File FileName="Models/Models/Categorium.cs" />
       <File FileName="Models/Models/Ordine.cs" />
       <File FileName="Models/Models/Pagamento.cs" />
-      <File FileName="Models/Models/Prodotto.cs" Line="1" Column="1" />
+      <File FileName="Models/Models/Prodotto.cs" />
       <File FileName="Models/Models/Ruolo.cs" />
-      <File FileName="Interfaces/IOrdine.cs" Line="1" Column="1" />
-      <File FileName="Interfaces/ICorriere.cs" Line="1" Column="1" />
-      <File FileName="Interfaces/ICategoria.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/IOrdine.cs" />
+      <File FileName="Interfaces/ICorriere.cs" />
+      <File FileName="Interfaces/ICategoria.cs" />
       <File FileName="ECommerceAP/Controllers/RegistrazioneController.cs" />
       <File FileName="ECommerceAP/Properties/launchSettings.json" />
-      <File FileName="ECommerceAP/Controllers/GetProdottiController.cs" Line="19" Column="32" />
+      <File FileName="ECommerceAP/Controllers/GetProdottiController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -55,6 +48,18 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="ECommerceAP" expanded="True" selected="True" />
+        </State>
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ECommerceAP PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
