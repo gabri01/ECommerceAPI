@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{BEFB289C-0553-41F2-851E-DDDAFB5C5521}|Default">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{BEFB289C-0553-41F2-851E-DDDAFB5C5521}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ECommerceAP/Program.cs">
     <Files>
       <File FileName="DataAccessLogic/ECommerceDBContext.cs" Line="250" Column="1" IsPinned="True" />
