@@ -1,0 +1,24 @@
+﻿using System;
+using ECommerceAP.Models;
+using Models.Models;
+
+namespace Interfaces
+{
+	public interface IUtente
+	{
+        //Login
+        public bool EsisteUtente(Login Utente);
+        public string Login(Login Utente);
+
+        public bool VerificaUtenteEsistente(string Email);
+
+        //Registrazione
+        public long Registrazione(Registrazione NuovoUtente);
+
+        public bool AutenticazioneUtente(Utente Utente);
+
+        //Modifica Utente
+        public bool ModificaUtente(Registrazione Utente, string Nome, string Cognome, string Email);
+    }
+}
+
