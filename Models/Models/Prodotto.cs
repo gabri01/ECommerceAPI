@@ -13,7 +13,7 @@ namespace Models
     {
         public Prodotto()
         {
-            Ordines = new HashSet<Ordine>();
+            Ordiniprodottis = new HashSet<Ordiniprodotti>();
         }
 
         [Key]
@@ -30,9 +30,11 @@ namespace Models
         public int IDCategoria { get; set; }
 
         [ForeignKey("IDCategoria")]
+        [System.Text.Json.Serialization.JsonIgnore]
         [InverseProperty("Prodottos")]
         public virtual Categorium IDCategoriaNavigation { get; set; }
         [InverseProperty("IDProdottoNavigation")]
-        public virtual ICollection<Ordine> Ordines { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Ordiniprodotti> Ordiniprodottis { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace Interfaces
         public bool ModificaUtente(Registrazione Utente, string Nome, string Cognome, string Email);
         public List<Prodotto> GetAllProdotti();
         public List<OrdiniUtente> GetOrdiniUtente(Utente Utente);
+        bool InsertOrdine(NuovoOrdine ordine);
+        public long InsertProdotto(Prodotto prodotto);
     }	
 }
 

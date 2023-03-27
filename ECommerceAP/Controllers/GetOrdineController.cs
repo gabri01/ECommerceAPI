@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -16,6 +17,7 @@ namespace AcademyShop.API.Controllers
             this.business = business;
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Get(Utente Utente)
         {
             if (business.AutenticazioneUtente(Utente))

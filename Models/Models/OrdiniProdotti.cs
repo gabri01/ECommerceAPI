@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Models
 {
-    [Table("OrdiniProdotti")]
+    [Table("Ordiniprodotti")]
     [Index("ID", Name = "IX_Ordiniprodotti")]
-    public partial class OrdiniProdotti
+    public partial class Ordiniprodotti
     {
         [Key]
         public int ID { get; set; }

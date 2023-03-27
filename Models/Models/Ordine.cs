@@ -11,6 +11,11 @@ namespace Models
     [Table("Ordine")]
     public partial class Ordine
     {
+        public Ordine()
+        {
+            Ordiniprodottis = new HashSet<Ordiniprodotti>();
+        }
+
         [Key]
         public int ID { get; set; }
         [Required]
@@ -21,24 +26,22 @@ namespace Models
         [StringLength(250)]
         public string Commento { get; set; }
         public int IDUtente { get; set; }
-        public int IDPagamento { get; set; }
         public int IDCorriere { get; set; }
-        public int IDProdotto { get; set; }
         [Required]
         [StringLength(50)]
         public string IndirizzoSpedizione { get; set; }
+        public int IdPagamento { get; set; }
 
         [ForeignKey("IDCorriere")]
         [InverseProperty("Ordines")]
         public virtual Corriere IDCorriereNavigation { get; set; }
-        [ForeignKey("IDPagamento")]
-        [InverseProperty("Ordines")]
-        public virtual Pagamento IDPagamentoNavigation { get; set; }
-        [ForeignKey("IDProdotto")]
-        [InverseProperty("Ordines")]
-        public virtual Prodotto IDProdottoNavigation { get; set; }
         [ForeignKey("IDUtente")]
         [InverseProperty("Ordines")]
         public virtual Utente IDUtenteNavigation { get; set; }
+        [ForeignKey("IdPagamento")]
+        [InverseProperty("Ordines")]
+        public virtual Pagamento IdPagamentoNavigation { get; set; }
+        [InverseProperty("IDOrdineNavigation")]
+        public virtual ICollection<Ordiniprodotti> Ordiniprodottis { get; set; }
     }
 }

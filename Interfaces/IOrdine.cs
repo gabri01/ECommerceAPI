@@ -7,6 +7,7 @@ namespace Interfaces
 	{
         //GetAllOrdini
         public List<OrdiniUtente> GetOrdiniUtente(Utente Utente);
+        bool InsertOrdine(NuovoOrdine ordine);
     }
 }
 

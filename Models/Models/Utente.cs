@@ -30,6 +30,7 @@ namespace Models
         [Required]
         [StringLength(16)]
         public string Password { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public int IDRuolo { get; set; }
         //aggiunto
         [System.Text.Json.Serialization.JsonIgnore]
@@ -37,6 +38,7 @@ namespace Models
         [ForeignKey("IDRuolo")]
         [InverseProperty("Utentes")]
         public virtual Ruolo IDRuoloNavigation { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         [InverseProperty("IDUtenteNavigation")]
         public virtual ICollection<Ordine> Ordines { get; set; }
     }

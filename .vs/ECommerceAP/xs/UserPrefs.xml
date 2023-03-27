@@ -1,30 +1,48 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{BEFB289C-0553-41F2-851E-DDDAFB5C5521}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="ECommerceAP/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DataAccessLogic/ECommerceDBContext.cs">
     <Files>
-      <File FileName="DataAccessLogic/ECommerceDBContext.cs" Line="250" Column="1" IsPinned="True" />
+      <File FileName="DataAccessLogic/ECommerceDBContext.cs" Line="178" Column="1" IsPinned="True" />
       <File FileName="Models/OrdiniUtente.cs" Line="22" Column="2" IsPinned="True" />
-      <File FileName="Models/Models/OrdiniProdotti.cs" Line="21" Column="1" IsPinned="True" />
+      <File FileName="Models/Models/OrdiniProdotti.cs" Line="13" Column="26" IsPinned="True" />
       <File FileName="Interfaces/IRuolo.cs" Line="6" Column="1" />
-      <File FileName="Interfaces/IProdotto.cs" Line="1" Column="1" />
-      <File FileName="Interfaces/IUtente.cs" Line="1" Column="1" />
-      <File FileName="Interfaces/IOrdine.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/IProdotto.cs" Line="2" Column="7" />
+      <File FileName="Interfaces/IUtente.cs" Line="1" Column="14" />
+      <File FileName="Interfaces/IOrdine.cs" Line="13" Column="1" />
       <File FileName="Interfaces/IPagamento.cs" Line="38" Column="1" />
       <File FileName="Interfaces/IOrdiniProdotti.cs" Line="1" Column="1" />
-      <File FileName="Models/Models/Utente.cs" Line="12" Column="26" />
-      <File FileName="Models/Models/Ordine.cs" Line="1" Column="1" />
-      <File FileName="Interfaces/IBusiness.cs" Line="25" Column="1" />
-      <File FileName="BusinessClass/BusinessClass.cs" Line="52" Column="20" />
-      <File FileName="ECommerceAP/Program.cs" Line="1" Column="1" />
+      <File FileName="Models/Models/Utente.cs" Line="45" Column="2" />
+      <File FileName="Models/Models/Ordine.cs" Line="9" Column="11" />
+      <File FileName="Interfaces/IBusiness.cs" Line="23" Column="1" />
+      <File FileName="BusinessClass/BusinessClass.cs" Line="52" Column="2" />
+      <File FileName="ECommerceAP/Program.cs" Line="106" Column="2" />
+      <File FileName="Models/Models/Registrazione.cs" Line="10" Column="23" />
+      <File FileName="Models/Models/Prodotto.cs" Line="9" Column="11" />
+      <File FileName="Models/Models/Ruolo.cs" Line="9" Column="17" />
+      <File FileName="Models/Models/Pagamento.cs" Line="9" Column="11" />
+      <File FileName="Models/Models/Login.cs" Line="4" Column="11" />
+      <File FileName="Models/Models/Corriere.cs" Line="9" Column="11" />
+      <File FileName="Models/Models/Categorium.cs" Line="27" Column="2" />
+      <File FileName="Interfaces/IDAL.cs" Line="6" Column="7" />
+      <File FileName="Interfaces/ICorriere.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/ICategoria.cs" Line="1" Column="1" />
+      <File FileName="ECommerceAP/efpt.config.json" Line="1" Column="1" />
+      <File FileName="ECommerceAP/appsettings.json" Line="1" Column="1" />
+      <File FileName="ECommerceAP/Controllers/GetProdottiController.cs" Line="1" Column="1" />
+      <File FileName="ECommerceAP/Controllers/LoginController.cs" Line="22" Column="49" />
+      <File FileName="ECommerceAP/Controllers/ModificaUtenteController.cs" Line="4" Column="18" />
+      <File FileName="ECommerceAP/Controllers/RegistrazioneController.cs" Line="29" Column="2" />
+      <File FileName="ECommerceAP/Controllers/GetOrdineController.cs" Line="8" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ECommerceAP" expanded="True">
             <Node name="BusinessLogic" expanded="True" />
-            <Node name="DataAccessLogic" expanded="True" />
+            <Node name="DataAccessLogic" expanded="True">
+              <Node name="ECommerceDBContext.cs" selected="True" />
+            </Node>
             <Node name="ECommerceAP" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="Interfaces" expanded="True" />
             <Node name="Models" expanded="True">

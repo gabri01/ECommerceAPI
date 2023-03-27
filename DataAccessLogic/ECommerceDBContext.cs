@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DataAccessLogic
 {
@@ -38,7 +39,7 @@ namespace DataAccessLogic
         public virtual DbSet<Prodotto> Prodottos { get; set; }
         public virtual DbSet<Ruolo> Ruolos { get; set; }
         public virtual DbSet<Utente> Utentes { get; set; }
-        public virtual DbSet<OrdiniProdotti> OrdiniProdottis { get; set; }
+        public virtual DbSet<Ordiniprodotti> Ordiniprodottis { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,23 +59,32 @@ namespace DataAccessLogic
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Ordine_Corriere");
 
-                entity.HasOne(d => d.IDPagamentoNavigation)
-                    .WithMany(p => p.Ordines)
-                    .HasForeignKey(d => d.IDPagamento)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Ordine_Pagamento");
-
-                entity.HasOne(d => d.IDProdottoNavigation)
-                    .WithMany(p => p.Ordines)
-                    .HasForeignKey(d => d.IDProdotto)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Ordine_Prodotto");
-
                 entity.HasOne(d => d.IDUtenteNavigation)
                     .WithMany(p => p.Ordines)
                     .HasForeignKey(d => d.IDUtente)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Ordine_Utente");
+
+                entity.HasOne(d => d.IdPagamentoNavigation)
+                    .WithMany(p => p.Ordines)
+                    .HasForeignKey(d => d.IdPagamento)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Ordine_Pagamento");
+            });
+
+            modelBuilder.Entity<Ordiniprodotti>(entity =>
+            {
+                entity.HasOne(d => d.IDOrdineNavigation)
+                    .WithMany(p => p.Ordiniprodottis)
+                    .HasForeignKey(d => d.IDOrdine)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Ordiniprodotti_Ordine");
+
+                entity.HasOne(d => d.IDProdottoNavigation)
+                    .WithMany(p => p.Ordiniprodottis)
+                    .HasForeignKey(d => d.IDProdotto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Ordiniprodotti_Prodotto1");
             });
 
             modelBuilder.Entity<Prodotto>(entity =>
@@ -85,6 +95,7 @@ namespace DataAccessLogic
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Prodotto_Categoria");
             });
+
 
             modelBuilder.Entity<Utente>(entity =>
             {
@@ -220,27 +231,98 @@ namespace DataAccessLogic
             return this.Prodottos.ToList();
         }
 
+        public long InsertProdotto(Prodotto prodotto)
+        {
+            Prodotto product = new Prodotto()
+            {
+                Nome = prodotto.Nome,
+                Quantita = prodotto.Quantita,
+                Prezzo = prodotto.Prezzo,
+                IDCategoria = prodotto.IDCategoria
+            };
+            var InsertProdotto = this.Prodottos.Add(product);
+            this.SaveChanges();
+            return prodotto.ID;
+        }
+
         public List<OrdiniUtente> GetOrdiniUtente(Utente Utente)
         {
             var OrdiniQuery = from o in this.Ordines
-                                join u in this.Utentes
-                                  on o.IDUtente equals u.ID
-                                join op in this.OrdiniProdottis
-                                  on o.ID equals op.IDOrdine
-                                join p in this.Prodottos
-                                    on op.IDProdotto equals p.ID
+                              join u in this.Utentes
+                                on o.IDUtente equals u.ID
+                              join op in this.Ordiniprodottis
+                                on o.ID equals op.IDOrdine
+                              join p in this.Prodottos
+                                  on op.IDProdotto equals p.ID
                               where u.ID == Utente.ID
+                              group new { op, p } by o.ID into ordineGroup
                               select new OrdiniUtente()
                               {
-                                IDUtente = u.ID,
-                                IDProdottoOP = op.ID,
-                                NomeProdotto = p.Nome,
-                                Quantita = op.Quantita
+                                  IDOrdine = ordineGroup.Key,
+                                  IDUtente = Utente.ID,
+                                  Prodotti = ordineGroup.Select(item => new Prodotto
+                                  {
+                                      ID = item.p.ID,
+                                      Nome = item.p.Nome,
+                                      Quantita = item.op.Quantita
+                                  }).ToList()
                               };
 
             return OrdiniQuery.ToList();
         }
 
+
+        public bool InsertOrdine(NuovoOrdine Ordine)
+        {
+            using (IDbContextTransaction transaction = this.Database.BeginTransaction())
+            {
+                try
+                {
+                    foreach (Prodotto Prodotto in Ordine.Prodotti)
+                    {
+                        Prodotto ProdottoEsiste = this.Prodottos.SingleOrDefault(p => p.ID == Prodotto.ID);
+                        if (ProdottoEsiste == null)
+                            throw new InvalidOperationException();
+
+                        if (ProdottoEsiste.Quantita < Prodotto.Quantita)
+                            throw new InvalidOperationException();
+
+                        ProdottoEsiste.Quantita -= Prodotto.Quantita;
+
+                        Ordine NuovoOrdine = new Ordine()
+                        {
+                            IDUtente = Ordine.IDUtente,
+                            Data = DateTime.Now,
+                            Stato = "In attesa",
+                            IdPagamento = Ordine.IdPagamento,
+                            IDCorriere = Ordine.IDCorriere,
+                            IndirizzoSpedizione = Ordine.IndirizzoSpedizione
+                        };
+
+                        this.Ordines.Add(NuovoOrdine);
+
+                        Ordiniprodotti DettaglioOrdine = new Ordiniprodotti()
+                        {
+                            IDOrdine = NuovoOrdine.ID,
+                            IDProdotto = Prodotto.ID,
+                            Quantita = Prodotto.Quantita
+                        };
+
+                        this.Ordiniprodottis.Add(DettaglioOrdine);
+
+                        this.SaveChanges();
+                    }
+                }
+                catch (InvalidOperationException)
+                {
+                    transaction.Rollback();
+                    return false;
+                }
+
+                transaction.Commit();
+                return true;
+            }
+        }
 
 
 

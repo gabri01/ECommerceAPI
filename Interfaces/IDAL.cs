@@ -7,9 +7,9 @@ using Models;
 
 namespace Interfaces
 {
-	public interface IDAL : ICategoria, IOrdine, IUtente, ICorriere, IPagamento, IProdotto, IRuolo, IOrdiniProdotti
+    public interface IDAL : ICategoria, IOrdine, IUtente, ICorriere, IPagamento, IProdotto, IRuolo, IOrdiniProdotti
     {
-        
+       
     }
 }
 

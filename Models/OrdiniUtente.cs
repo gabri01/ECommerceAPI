@@ -18,6 +18,8 @@ namespace Models
         public int Quantita { get; set; }
         // Tabella Prodotto
         public string NomeProdotto { get; set; }
+        public int IDOrdine { get; set; }
+        public List<Prodotto> Prodotti { get; set; }
     }
 }
 

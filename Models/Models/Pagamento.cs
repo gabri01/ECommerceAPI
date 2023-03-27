@@ -22,7 +22,7 @@ namespace Models
         [StringLength(50)]
         public string Nome { get; set; }
 
-        [InverseProperty("IDPagamentoNavigation")]
+        [InverseProperty("IdPagamentoNavigation")]
         public virtual ICollection<Ordine> Ordines { get; set; }
     }
 }

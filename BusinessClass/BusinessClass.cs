@@ -48,5 +48,13 @@ namespace BusinessLogic
         {
             return dal.GetOrdiniUtente(Utente);
         }
+        public bool InsertOrdine(NuovoOrdine Ordine)
+        {
+            return dal.InsertOrdine(Ordine);
+        }
+        public long InsertProdotto(Prodotto prodotto)
+        {
+            return dal.InsertProdotto(prodotto);
+        }
     }
 }
